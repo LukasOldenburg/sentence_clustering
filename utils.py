@@ -42,7 +42,10 @@ def process_sentences(data, approach, column_names, translate_back, dim_red='pca
         if not os.path.exists(f"./results/{name}"):
             os.makedirs(f"./results/{name}")
         for cluster_idx, cluster in clustered_data:
-            sents = cluster[name.replace("_cluster_idx", "")].tolist()
+            if translate_back:
+                sents = cluster[name.replace("_translated", "")].tolist()
+            else:
+                sents = cluster[name.replace("_cluster_idx", "")].tolist()
             file_name = f'./results/{name}/cluster_{cluster_idx}.txt'
             with open(file_name, 'w') as file:
                 for sent in sents:
