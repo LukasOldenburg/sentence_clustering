@@ -20,7 +20,13 @@ import os
 
 def process_sentences(data, approach, column_names, translate_back, dim_red='pca', num_sample_sentences=2, k_means_cluster=10):
     
+    # Fill nan and handle reg expressions
     data.fillna("No data", inplace=True)
+    for col in data.select_dtypes(include=['object']).columns:
+        data[col] = data[col].str.replace(r'[\n\r\t]+| {2,}', ' ', regex=True)
+        data[col] = data[col].str.replace(r'[#@\[\]]', '', regex=True)
+
+
     for name in column_names:
         original_sentences = data[name.replace("_translated", "")] if translate_back else None
         sentences = data[name]
@@ -154,7 +160,7 @@ def plot_clusters(embeddings, labels, sentences, column_name, original_sentences
     # Get unique cluster labels and their counts
     _, label_counts = np.unique(labels, return_counts=True)
     legend_labels = [f'Cluster {label} ({count} instances)' for label, count in zip(unique_labels, label_counts)]
-    plt.legend(title='Cluster', loc='upper left', bbox_to_anchor=(1.05, 1), labels=legend_labels, ncol=2 if len(set(labels)) > 25 else 1)
+    plt.legend(title=f'Cluster\nSum instances:{label_counts.sum()}', loc='upper left', bbox_to_anchor=(1.05, 1), labels=legend_labels, ncol=2 if len(set(labels)) > 25 else 1)
 
 
     # Determine the last question for each cluster
