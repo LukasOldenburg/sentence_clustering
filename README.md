@@ -1,9 +1,11 @@
 
 # Sentence Processing Toolkit
 
-This repository contains tools for natural language processing, specifically focusing on clustering sentences and translating text. It provides a streamlined approach for handling large volumes of text data in form of e.g. questions or answers, to cluster and visualize them into groups.
+This repository contains tools for natural language processing, specifically focusing on clustering sentences and translating text. 
+It provides a streamlined approach for handling large volumes of text data in form of e.g. questions or answers. 
+The text data is embedded and grouped into clusters which is exemplary shown below:
 
-[Link text](results/cluster_analysis_Question.pdf)
+[Example clustering results](results/cluster_analysis_Question.pdf)
 
 ## Features
 
