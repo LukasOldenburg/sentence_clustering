@@ -16,8 +16,6 @@ The toolkit is divided into two core functionalities:
 
 The sentence clustering functionality uses embeddings to group sentences based on their semantic similarity. This is particularly useful for analyzing and categorizing large sets of textual data, such as customer feedback or survey responses.
 
-[Example clustering results for ./data/example_data_clustering.xlsx](./results/cluster_analysis_Question.pdf)
-
 - **Script:** `run_sentence_clustering.sh`
 
 This component leverages advanced natural language processing techniques to generate embeddings for sentences and then applies clustering algorithms to group these sentences into meaningful clusters and visualize them.
